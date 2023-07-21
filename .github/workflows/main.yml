@@ -1,6 +1,9 @@
 name: Shell Commands 
 
-on: [push]
+on: 
+  push:
+  pull_request:
+    types: [closed, opened, edited]
 
 jobs:
   run-shell-command:

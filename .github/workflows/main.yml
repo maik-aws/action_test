@@ -1,9 +1,15 @@
-name: Shell Commands 
+name: main
 
 on: 
   push:
-  pull_request:
-    types: [closed, opened, edited]
+    branches:
+      - master
+      - main
+    paths:
+      - '**dockerfile'
+
+
+
 
 jobs:
   run-shell-command:
@@ -11,18 +17,3 @@ jobs:
     steps: 
       - name: echo a string
         run: echo "Hello World"
-        timeout-minutes: 0
-      - name: multiline script 
-        run: |
-           echo "Hello "
-           echo "repo"
-  run-windwos-commands:
-    runs-on: windows-latest
-    needs: ["run-shell-command"]
-    steps:
-      - name: Directory PowerShell
-        run: Get-Location 
-      - name: Directory Bash 
-        run: pwd 
-        shell: bash 
-        
